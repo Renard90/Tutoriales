@@ -533,8 +533,459 @@ interpret_all <- function(views, return_sum = TRUE) {
 interpret_all(linkedin)
 
 search()
-qplot(mtcars wt,mtcarshp)
 
 # Load the ggplot2 package
 library("ggplot2")
 install.packages("ggplot2")
+
+library("ggplot2")
+
+# Retry the qplot() function
+qplot(mtcars$wt, mtcars$hp)
+
+search()
+
+?lapply
+
+# The vector pioneers has already been created for you
+pioneers <- c("GAUSS:1777", "BAYES:1702", "PASCAL:1623", "PEARSON:1857")
+
+# Split names from birth year
+split_math <- strsplit(pioneers, split = ":")
+split_math
+
+# Convert to lowercase strings: split_low
+split_low <- lapply(split_math, tolower)
+split_low
+
+# Take a look at the structure of split_low
+str(split_low)
+
+plus1 <- function(a) {
+  
+ return(a+1)
+  
+}
+lapply(facebook, plus1)
+
+# Code from previous exercise:
+pioneers <- c("GAUSS:1777", "BAYES:1702", "PASCAL:1623", "PEARSON:1857")
+
+split <- strsplit(pioneers, split = ":")
+split
+
+# Write function select_first()
+select_first <- function(x) {
+  x[1]
+}
+
+# Apply select_first() over split_low: names
+names <- lapply(split_low, select_first)
+names
+
+# Write function select_second()
+select_second <- function(x) {
+  x[2]
+}
+
+# Apply select_second() over split_low: years
+years <- lapply(split_low, select_second)
+years
+
+
+# Named function
+triple <- function(x) { 3 * x }
+
+# Anonymous function with same implementation
+function(x) { 3 * x }
+
+# Use anonymous function inside lapply()
+lapply(list(1,2,3), function(x) { 3 * x })
+
+# Definition of split_low
+pioneers <- c("GAUSS:1777", "BAYES:1702", "PASCAL:1623", "PEARSON:1857")
+split <- strsplit(pioneers, split = ":")
+split_low <- lapply(split, tolower)
+
+# Transform: use anonymous function inside lapply
+names <- lapply(split_low, function(x) { x[1] })
+names
+
+# Transform: use anonymous function inside lapply
+years <- lapply(split_low, function(x) { x[2] })
+years
+
+multiply <- function(x, factor) {
+  x * factor
+}
+lapply(list(1,2,3), multiply, factor = 3)
+
+# Definition of split_low
+pioneers <- c("GAUSS:1777", "BAYES:1702", "PASCAL:1623", "PEARSON:1857")
+split <- strsplit(pioneers, split = ":")
+split_low <- lapply(split, tolower)
+
+# Generic select function
+select_el <- function(x, index) {
+  x[index]
+}
+
+# Use lapply() twice on split_low: names and years
+names <- lapply(split_low, select_el, index = 1)
+names
+
+years <- lapply(split_low, select_el, index = 2)
+years
+
+# temp has already been defined in the workspace
+# The tic-tac-toe matrix ttt has already been defined for you
+t1 <- c( 3,  7,  9,  6, -1)
+t2 <- c( 6,  9, 12, 13,  5)
+t3 <- c(4,  8,  3, -1, -3)
+t4 <- c(1,  4,  7,  2, -2)
+t5 <- c(5, 7, 9, 4, 2)
+t6 <- c(-3,  5,  8,  9,  4)
+t7 <- c(3, 6, 9, 4, 1)
+
+
+temp <- list(t1, t2, t3, t4, t5, t6, t7)
+temp
+
+class(temp)
+
+lapply(temp, min)
+
+# Use sapply() to find each day's minimum temperature
+sapply(temp, min)
+
+# Use lapply() to find each day's maximum temperature
+lapply(temp, max)
+
+# Use sapply() to find each day's maximum temperature
+sapply(temp, max)
+
+# temp is already defined in the workspace
+
+# Finish function definition of extremes_avg
+extremes_avg <- function(x) {
+  ( min(x) + max(x) ) / 2
+}
+
+# Apply extremes_avg() over temp using sapply()
+sapply(temp, extremes_avg)
+
+# Apply extremes_avg() over temp using lapply()
+lapply(temp, extremes_avg)
+
+# temp is already available in the workspace
+
+# Create a function that returns min and max of a vector: extremes
+extremes <- function(x) {
+  c(min = min(x), max = max(x))
+}
+
+# Apply extremes() over temp with sapply()
+sapply(temp, extremes)
+
+# Apply extremes() over temp with lapply()
+lapply(temp, extremes)
+
+# temp is already prepared for you in the workspace
+
+# Definition of below_zero()
+below_zero <- function(x) {
+  return(x[x < 0])
+}
+
+# Apply below_zero over temp using sapply(): freezing_s
+freezing_s <- sapply(temp, below_zero)
+freezing_s
+
+# Apply below_zero over temp using lapply(): freezing_l
+freezing_l <- lapply(temp, below_zero)
+freezing_l
+
+# temp is already available in the workspace
+
+# Definition of print_info()
+print_info <- function(x) {
+  cat("The average temperature is", mean(x), "\n")
+}
+
+# Apply print_info() over temp using sapply()
+sapply(temp, print_info)
+
+# Apply print_info() over temp using lapply()
+lapply(temp, print_info)
+
+# temp is already available in the workspace
+
+# Definition of basics()
+basics <- function(x) {
+  c(min = min(x), mean = mean(x), max = max(x))
+}
+
+# Apply basics() over temp using vapply()
+vapply(temp, basics, numeric(3))
+
+# Definition of the basics() function
+basics <- function(x) {
+  c(min = min(x), mean = mean(x), median = median(x), max = max(x))
+}
+
+# Fix the error:
+vapply(temp, basics, numeric(4))
+
+# temp is already defined in the workspace
+
+# Convert to vapply() expression
+vapply(temp, max, numeric(1))
+
+# Convert to vapply() expression
+vapply(temp, function(x, y) { mean(x) > y }, logical(1), y = 5)
+
+#abs(): Calculate the absolute value.
+#sum(): Calculate the sum of all the values in a data structure.
+#mean(): Calculate the arithmetic mean.
+#round(): Round the values to 0 decimal places by default.
+
+####################
+
+# The errors vector has already been defined for you
+errors <- c(1.9, -2.6, 4.0, -9.5, -3.4, 7.3)
+
+# Sum of absolute rounded values of errors
+sum(abs(round(errors)))
+
+# Don't edit these two lines
+vec1 <- c(1.5, 2.5, 8.4, 3.7, 6.3)
+vec2 <- rev(vec1)
+
+mean(c(abs(vec1), abs(vec2)))
+
+#seq(): Generate sequences, by specifying the from, to, and by arguments.
+#rep(): Replicate elements of vectors and lists.
+#sort(): Sort a vector in ascending order. Works on numerics, but also on character strings and logicals.
+#rev(): Reverse the elements in a data structures for which reversal is defined.
+#str(): Display the structure of any R object.
+#append(): Merge vectors or lists.
+#is.*(): Check for the class of an R object.
+#as.*(): Convert an R object from one class to another.
+#unlist(): Flatten (possibly embedded) lists to produce a vector.
+
+# The linkedin and facebook lists have already been created for you
+linkedin <- list(16, 9, 13, 5, 2, 17, 14)
+linkedin
+facebook <- list(17, 7, 5, 16, 8, 13, 14)
+facebook
+
+# Convert linkedin and facebook to a vector: li_vec and fb_vec
+li_vec <- unlist(linkedin)
+li_vec
+fb_vec <- unlist(facebook)
+fb_vec
+
+# Append fb_vec to li_vec: social_vec
+social_vec <- append(li_vec, fb_vec)
+social_vec
+
+# Sort social_vec
+sort(social_vec, decreasing = TRUE)
+
+rep(seq(1, 7, by = 2), times = 7)
+
+# Create first sequence: seq1
+seq1 <- seq(1, 500, by = 3)
+seq1
+
+# Create second sequence: seq2
+seq2 <- seq(1200, 900, by = -7)
+seq2
+
+# Calculate total sum of the sequences
+sum(seq1) + sum(seq2)
+emails <- c("john.doe@ivyleague.edu", "education@world.gov", "dalai.lama@peace.org",
+            "invalid.edu", "quant@bigdatacollege.edu", "cookie.monster@sesame.tv")
+
+# Use grepl() to match for "edu"
+grepl("edu", emails)
+
+# Use grep() to match for "edu", save result to hits
+hits <- grep("edu", emails)
+hits
+
+# Subset emails using hits
+emails[hits]
+
+# The emails vector has already been defined for you
+emails <- c("john.doe@ivyleague.edu", "education@world.gov", "dalai.lama@peace.org",
+            "invalid.edu", "quant@bigdatacollege.edu", "cookie.monster@sesame.tv")
+
+# Use grepl() to match for .edu addresses more robustly
+grepl("@.*\\.edu$", emails)
+
+# Use grep() to match for .edu addresses more robustly, save result to hits
+hits <- grep("@.*\\.edu$", emails)
+hits
+
+# Subset emails using hits
+emails[hits]
+
+sub("@.*\\.edu$", "@datacamp.edu", emails)
+
+awards <- c("Won 1 Oscar.",
+            "Won 1 Oscar. Another 9 wins & 24 nominations.",
+            "1 win and 2 nominations.",
+            "2 wins & 3 nominations.",
+            "Nominated for 2 Golden Globes. 1 more win & 2 nominations.",
+            "4 wins & 1 nomination.")
+
+sub(".*\\s([0-9]+)\\snomination.*$", "\\1", awards)
+
+awards <- c("Won 1 Oscar.",
+            "Won 1 Oscar. Another 9 wins & 24 nominations.",
+            "1 win and 2 nominations.",
+            "2 wins & 3 nominations.",
+            "Nominated for 2 Golden Globes. 1 more win & 2 nominations.",
+            "4 wins & 1 nomination.")
+
+sub(".*\\s([0-9]+)\\snomination.*$", "\\1", awards)
+
+# Get the current date: today
+today <- Sys.Date()
+today
+
+# See what today looks like under the hood
+unclass(today)
+
+# Get the current time: now
+now <- Sys.time()
+now
+
+# See what now looks like under the hood
+unclass(now)
+
+as.Date("1982-01-13")
+as.Date("Jan-13-82", format = "%d %B, %Y")
+as.Date("13 January, 1982", format = "%d %B, %Y")
+
+today <- Sys.Date()
+format(Sys.Date(), format = "%d %B, %Y")
+format(Sys.Date(), format = "Today is a %A!")
+
+# Definition of character strings representing dates
+str1 <- "May 23, '96"
+str2 <- "2012-03-15"
+str3 <- "30/January/2006"
+
+# Convert the strings to dates: date1, date2, date3
+date1 <- as.Date(str1, format = "%b %d, '%y")
+date1
+
+date2 <- as.Date(str2)
+date2
+
+date3 <- as.Date(str3,format, tryformat = "%d/%B/%Y")
+date3
+
+# Convert dates to formatted strings
+format(date1, "%A")
+
+format(date2, "%d")
+
+format(date3, "%b %Y")
+
+#################
+
+# Definition of character strings representing times
+str1 <- "May 23, '96 hours:23 minutes:01 seconds:45"
+str2 <- "2012-3-12 14:23:08"
+
+# Convert the strings to POSIXct objects: time1, time2
+time1 <- as.POSIXct(str1, format = "%B %d, '%y hours:%H minutes:%M seconds:%S")
+time1
+
+time2 <- as.POSIXct(str2)
+time2
+
+# Convert times to formatted strings
+format(time1, "%M")
+
+format(time2, "%I:%M %p")
+
+today <- Sys.Date()
+today + 1
+today - 1
+
+
+as.Date("2015-03-12") - as.Date("2015-02-27")
+
+# day1, day2, day3, day4 and day5 are already available in the workspace
+day1 <- as.Date("2018-08-18")
+day2 <- as.Date("2018-08-20")
+day3 <- as.Date("2018-08-25")
+day4 <- as.Date("2018-08-31")
+day5 <- as.Date("2018-09-05")
+
+
+# Difference between last and first pizza day
+day5 - day1
+
+day2 - day1
+day3 - day2
+day4 - day3
+day5 - day4
+
+# Create vector pizza
+pizza <- c(day1, day2, day3, day4, day5)
+pizza
+
+# Create differences between consecutive pizza days: day_diff
+day_diff <- diff(pizza)
+day_diff
+
+# Average period between two consecutive pizza days
+mean(day_diff)
+
+now <- Sys.time()
+now + 3600          # add an hour
+now - 3600 * 24     # subtract a day
+
+birth <- as.POSIXct("1879-03-14 14:37:23")
+death <- as.POSIXct("1955-04-18 03:47:12")
+einstein <- death - birth
+einstein
+
+# login and logout are already defined in the workspace
+login <- as.POSIXct("2018-08-22 10:18:04 UTC")
+login
+
+logout <- as.POSIXct("2018-08-22 10:56:29 UTC")
+logout
+
+# Calculate the difference between login and logout: time_online
+time_online <- logout - login
+
+# Inspect the variable time_online
+time_online
+
+astro <- c("20-Mar-2015",
+           "25-Jun-2015", 
+           "23-Sep-2015",
+           "22-Dec-2015") 
+astro
+
+meteo <- c("March 1, 15",
+           "June 1, 15", 
+           "September 1, 15",
+           "December 1, 15") 
+meteo
+
+astro_dates <- as.Date(astro, format = "%d-%b-%Y")
+astro_dates
+
+# Convert meteo to vector of Date objects: meteo_dates
+meteo_dates <- as.Date(meteo, format = "%B %d, %y")
+meteo_dates
+
+max(abs(meteo_dates - astro_dates))
